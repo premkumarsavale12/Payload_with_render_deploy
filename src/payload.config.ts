@@ -18,6 +18,11 @@ import { getServerSideURL } from './utilities/getURL'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+console.log('--- ENV DEBUG START ---')
+console.log('Keys available:', Object.keys(process.env).sort().join(', '))
+console.log('DATABASE_URL value type:', typeof process.env.DATABASE_URL)
+console.log('--- ENV DEBUG END ---')
+
 if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is not defined in the environment variables.')
 }
