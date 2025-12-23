@@ -213,6 +213,9 @@ export interface Page {
     | Slider
     | Partner
     | Conten
+    | Faq
+    | Logo
+    | Down
   )[];
   meta?: {
     title?: string | null;
@@ -933,6 +936,98 @@ export interface Conten {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  Heading?: string | null;
+  items?:
+    | {
+        Question: string;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logo".
+ */
+export interface Logo {
+  heading?: string | null;
+  Paragraph?: string | null;
+  Logo?:
+    | {
+        Images: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logo';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "down".
+ */
+export interface Down {
+  contact?: {
+    companyName?: string | null;
+    street?: string | null;
+    zipCity?: string | null;
+    country?: string | null;
+    email?: string | null;
+    phone?: string | null;
+  };
+  officeHourse?:
+    | {
+        days?: string | null;
+        time?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  navigation?:
+    | {
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  legalLinks?:
+    | {
+        label?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  socialMedia?:
+    | {
+        icon: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'down';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1246,6 +1341,9 @@ export interface PagesSelect<T extends boolean = true> {
         slider?: T | SliderSelect<T>;
         partner?: T | PartnerSelect<T>;
         conten?: T | ContenSelect<T>;
+        faq?: T | FaqSelect<T>;
+        logo?: T | LogoSelect<T>;
+        down?: T | DownSelect<T>;
       };
   meta?:
     | T
@@ -1444,6 +1542,83 @@ export interface ContenSelect<T extends boolean = true> {
         Paragraph?: T;
         AuthorName?: T;
         logo?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  Heading?: T;
+  items?:
+    | T
+    | {
+        Question?: T;
+        richText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logo_select".
+ */
+export interface LogoSelect<T extends boolean = true> {
+  heading?: T;
+  Paragraph?: T;
+  Logo?:
+    | T
+    | {
+        Images?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "down_select".
+ */
+export interface DownSelect<T extends boolean = true> {
+  contact?:
+    | T
+    | {
+        companyName?: T;
+        street?: T;
+        zipCity?: T;
+        country?: T;
+        email?: T;
+        phone?: T;
+      };
+  officeHourse?:
+    | T
+    | {
+        days?: T;
+        time?: T;
+        id?: T;
+      };
+  navigation?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  legalLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  socialMedia?:
+    | T
+    | {
+        icon?: T;
         id?: T;
       };
   id?: T;

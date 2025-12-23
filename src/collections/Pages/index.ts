@@ -19,6 +19,9 @@ import { VideoBlock } from '../../blocks/VideBlock/config'
  import { Slider }  from '../../blocks/Slider/config'
  import { Partner } from '../../blocks/Partner/config'
  import { Conten }  from '../../blocks/Conten/config'
+ import { FAQ } from '../../blocks/FAQ/config'
+ import { Logo} from '../../blocks/Logo/config'
+ import { Down } from '../../blocks/Down/config'
 
 import {
   MetaDescriptionField,
@@ -79,7 +82,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, VideoBlock, MediBlock, Head, Right, Slider, Partner, Conten],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, VideoBlock, MediBlock, Head, Right, Slider, Partner, Conten, FAQ, Logo,Down],
               required: true,
               admin: {
                 initCollapsed: true,
