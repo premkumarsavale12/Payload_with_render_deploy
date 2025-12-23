@@ -18,6 +18,14 @@ import { getServerSideURL } from './utilities/getURL'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is not defined in the environment variables.')
+}
+
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET is not defined in the environment variables.')
+}
+
 export default buildConfig({
   admin: {
     components: {
@@ -59,7 +67,7 @@ export default buildConfig({
   editor: defaultLexical,
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.DATABASE_URL,
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
