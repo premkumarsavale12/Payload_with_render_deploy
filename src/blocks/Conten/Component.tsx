@@ -42,7 +42,7 @@ export const Conten: React.FC<ContenProps> = ({ cards }) => {
                 {/* Previous Button */}
                 <div
                     ref={prevRef}
-                    className="absolute left-4 z-50 flex items-center justify-center
+                    className="absolute -ml-[80px] z-50 flex items-center justify-center
                         w-12 h-12 rounded-full bg-white shadow-lg cursor-pointer
                            hover:scale-110 transition-transform"
                     aria-label="Previous slide"
@@ -62,12 +62,12 @@ export const Conten: React.FC<ContenProps> = ({ cards }) => {
                 {/* Next Button */}
                 <div
                     ref={nextRef}
-                    className="absolute right-4 z-50 flex items-center justify-center
+                    className="absolute right-4 z-50 -mr-[90px] flex items-center justify-center
                           w-12 h-12 rounded-full bg-white shadow-lg cursor-pointer
                     hover:scale-110 transition-transform"
                     aria-label="Next slide"
                 >
-                    <svg width="20" height="20" viewBox="0 0 24 24">
+                    <svg width="20" height="20" viewBox="0 0 24 24" >
                         <path
                             d="M9 6l6 6-6 6"
                             fill="none"
