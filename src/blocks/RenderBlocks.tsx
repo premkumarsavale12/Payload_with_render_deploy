@@ -12,12 +12,13 @@ import { MediBlock } from '@/blocks/MediBlock/Component'
 import { Head } from '@/blocks/Head/Component'
 import { Right } from '@/blocks/Right/Component'
 import { FAQ } from '@/blocks/FAQ/Compoenent'
-import { Slider }  from  '@/blocks/Slider/Component'
+import { Slider } from '@/blocks/Slider/Component'
 import { Partner } from '@/blocks/Partner/Component'
-import {  Conten }  from '@/blocks/Conten/Component'
-import { Logo }  from  '@/blocks/Logo/Component'
-import { Down }  from '@/blocks/Down/Component'
+import { Conten } from '@/blocks/Conten/Component'
+import { Logo } from '@/blocks/Logo/Component'
+import { Down } from '@/blocks/Down/Component'
 import { Number } from '@/blocks/Number/Component'
+import { Redirect } from '@/blocks/Redirect/Component'
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -29,12 +30,13 @@ const blockComponents = {
   head: Head,
   right: Right,
   faq: FAQ,
-   slider  :Slider,
-   Partner :Partner,
-  conten   :Conten,
-  logo  :Logo,
-    down :Down,
-      number: Number
+  slider: Slider,
+  Partner: Partner,
+  conten: Conten,
+  logo: Logo,
+  down: Down,
+  number: Number,
+  redirect: Redirect
 }
 
 export const RenderBlocks: React.FC<{
