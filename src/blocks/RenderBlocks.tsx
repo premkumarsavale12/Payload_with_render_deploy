@@ -17,6 +17,7 @@ import { Partner } from '@/blocks/Partner/Component'
 import {  Conten }  from '@/blocks/Conten/Component'
 import { Logo }  from  '@/blocks/Logo/Component'
 import { Down }  from '@/blocks/Down/Component'
+import { Number } from '@/blocks/Number/Component'
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -32,7 +33,8 @@ const blockComponents = {
    Partner :Partner,
   conten   :Conten,
   logo  :Logo,
-    down :Down
+    down :Down,
+      number: Number
 }
 
 export const RenderBlocks: React.FC<{

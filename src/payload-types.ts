@@ -216,6 +216,7 @@ export interface Page {
     | Faq
     | Logo
     | Down
+    | Number
   )[];
   meta?: {
     title?: string | null;
@@ -1028,6 +1029,24 @@ export interface Down {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "number".
+ */
+export interface Number {
+  Heading?: string | null;
+  item?:
+    | {
+        logo: number | Media;
+        name?: string | null;
+        number?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'number';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1344,6 +1363,7 @@ export interface PagesSelect<T extends boolean = true> {
         faq?: T | FaqSelect<T>;
         logo?: T | LogoSelect<T>;
         down?: T | DownSelect<T>;
+        number?: T | NumberSelect<T>;
       };
   meta?:
     | T
@@ -1619,6 +1639,23 @@ export interface DownSelect<T extends boolean = true> {
     | T
     | {
         icon?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "number_select".
+ */
+export interface NumberSelect<T extends boolean = true> {
+  Heading?: T;
+  item?:
+    | T
+    | {
+        logo?: T;
+        name?: T;
+        number?: T;
         id?: T;
       };
   id?: T;

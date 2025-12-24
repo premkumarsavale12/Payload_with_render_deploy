@@ -1,55 +1,46 @@
 
 "use client"
+import React from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useRef } from "react";
-import Image from "next/image";
+interface NumberProps {
+    Heading?: string | null;
 
-
-interface LogoProps {
-    heading?: string | null;
-    Paragraph?: string | null;
-    Logo?:
+    item?:
     | {
-
-        Images: {
+        logo: {
             url: string,
             alt: string
         }
-        id?: number;
+        name?: string | null;
+        number?: string | null;
+        id?: string | null;
     }[]
+    | null;
 }
 
+export const Number: React.FC<NumberProps> = ({ item, Heading }) => {
 
-
-export const Logo: React.FC<LogoProps> = ({ heading, Logo, Paragraph }) => {
     const prevRef = useRef<HTMLDivElement | null>(null);
     const nextRef = useRef<HTMLDivElement | null>(null);
 
+    // console.log(item);
 
     return (
 
         <>
-
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
-                {heading}
-            </h1>
-
-            <p className="ml-[600px] text-base md:text-lg text-gray-600 leading-relaxed max-w-4xl">
-                {Paragraph}
-            </p>
+            <div className="relative max-w-7xl mx-auto  px-4">
+                <h1 className="text-center font-extrabold text-black mb-[30px]"> {Heading}</h1>
 
 
-
-            <div className="relative max-w-[1200px] -mt-[80px] mx-auto h-[400px] flex items-center">
-
-                {/* Previous Button */}
                 <div
                     ref={prevRef}
-                    className="absolute left-4 z-50 -ml-[100px]  flex items-center justify-center
+                    className="absolute left-4 z-50 -ml-[100px]  mt-[40px] flex items-center justify-center
                         w-12 h-12 rounded-full bg-blue-400   text-white  shadow-lg cursor-pointer
                            hover:scale-110 transition-transform"
                     aria-label="Previous slide"
@@ -69,7 +60,7 @@ export const Logo: React.FC<LogoProps> = ({ heading, Logo, Paragraph }) => {
                 {/* Next Button */}
                 <div
                     ref={nextRef}
-                    className="absolute right-4 z-50 -mr-[100px]  flex items-center justify-center
+                    className="absolute right-4 z-50 -mr-[100px]   mt-[40px]  flex items-center justify-center
                           w-12 h-12 rounded-full bg-blue-400 text-white shadow-lg cursor-pointer
                     hover:scale-110 transition-transform"
                     aria-label="Next slide"
@@ -86,18 +77,14 @@ export const Logo: React.FC<LogoProps> = ({ heading, Logo, Paragraph }) => {
                     </svg>
                 </div>
 
+
+
                 <Swiper
                     modules={[Navigation, Autoplay]}
                     loop
                     autoplay={{ delay: 3000, }}
                     spaceBetween={30}
                     slidesPerView={4}
-                    // onBeforeInit={(swiper) => {
-                    //     // @ts-ignore
-                    //     swiper.params.navigation.prevEl = prevRef.current;
-                    //     // @ts-ignore
-                    //     swiper.params.navigation.nextEl = nextRef.current;
-                    // }}
                     navigation={{
                         prevEl: prevRef.current,
                         nextEl: nextRef.current,
@@ -105,34 +92,38 @@ export const Logo: React.FC<LogoProps> = ({ heading, Logo, Paragraph }) => {
                     className="w-full"
                 >
 
-                    {Logo &&
-                        Logo.map((item, index) => (
+                    {item?.map((items, index) => (
 
-                            <SwiperSlide key={index}>
-                                <div className="flex justify-center items-center bg-white p-4 h-32 w-full">
-                                    <div className="relative w-full h-full max-w-[150px] max-h-[100px]">
-                                        <Image
-                                            key={index}
-                                            src={item.Images.url}
-                                            alt={item.Images.alt}
-                                            height={100}
-                                            width={400}
+                        <SwiperSlide key={index}>
+                            <div
+                                key={index}
+                                className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition"
+                            >
+                                {/* Top Section */}
+                                <div className="flex items-center gap-3 text-gray-600">
+                                    {items.logo && (
+                                        <img
+                                            src={items.logo.url}
+                                            alt={items.logo.alt}
+                                            className="w-6 h-6 object-contain"
                                         />
-                                    </div>
+                                    )}
+                                    <span className="text-sm font-medium">{items.name}</span>
                                 </div>
 
-                            </SwiperSlide>
-                        )
+                                {/* Number */}
+                                <h1 className="mt-6 text-4xl font-bold text-gray-900">
+                                    {items.number}
+                                </h1>
+                            </div>
 
-                        )}
-
+                        </SwiperSlide>
+                    ))}
 
 
                 </Swiper>
             </div>
 
-        
         </>
     )
-
 }
