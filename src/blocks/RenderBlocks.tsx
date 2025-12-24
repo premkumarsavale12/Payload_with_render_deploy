@@ -19,6 +19,7 @@ import { Logo } from '@/blocks/Logo/Component'
 import { Down } from '@/blocks/Down/Component'
 import { Number } from '@/blocks/Number/Component'
 import { Redirect } from '@/blocks/Redirect/Component'
+import { References } from '@/blocks/Reference/Component'
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -36,7 +37,8 @@ const blockComponents = {
   logo: Logo,
   down: Down,
   number: Number,
-  redirect: Redirect
+  redirect: Redirect,
+  reference: References
 }
 
 export const RenderBlocks: React.FC<{

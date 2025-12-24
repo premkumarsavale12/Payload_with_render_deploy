@@ -218,6 +218,7 @@ export interface Page {
     | Down
     | Number
     | Redirect
+    | Reference
   )[];
   meta?: {
     title?: string | null;
@@ -1074,6 +1075,37 @@ export interface Redirect {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reference".
+ */
+export interface Reference {
+  data?:
+    | {
+        Image?: (number | null) | Media;
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        Paragraph?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'reference';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect1 {
@@ -1392,6 +1424,7 @@ export interface PagesSelect<T extends boolean = true> {
         down?: T | DownSelect<T>;
         number?: T | NumberSelect<T>;
         redirect?: T | RedirectSelect<T>;
+        reference?: T | ReferenceSelect<T>;
       };
   meta?:
     | T
@@ -1697,6 +1730,22 @@ export interface RedirectSelect<T extends boolean = true> {
   richText?: T;
   Paragraph?: T;
   Button?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reference_select".
+ */
+export interface ReferenceSelect<T extends boolean = true> {
+  data?:
+    | T
+    | {
+        Image?: T;
+        richText?: T;
+        Paragraph?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
