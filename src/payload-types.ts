@@ -1078,6 +1078,21 @@ export interface Redirect {
  * via the `definition` "reference".
  */
 export interface Reference {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   data?:
     | {
         Image?: (number | null) | Media;
@@ -1738,6 +1753,7 @@ export interface RedirectSelect<T extends boolean = true> {
  * via the `definition` "reference_select".
  */
 export interface ReferenceSelect<T extends boolean = true> {
+  richText?: T;
   data?:
     | T
     | {

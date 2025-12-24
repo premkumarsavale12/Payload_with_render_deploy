@@ -10,7 +10,7 @@ interface RedirectProps {
 
 export const Redirect: React.FC<RedirectProps> = ({ richText, Paragraph, Button }) => {
 
-    console.log(richText, Paragraph, Button);
+    // console.log(richText, Paragraph, Button);
 
     return (
 

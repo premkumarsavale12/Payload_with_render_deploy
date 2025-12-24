@@ -1,26 +1,36 @@
 import RichText from "@/components/RichText";
+import { DefaultTypedEditorState } from "@payloadcms/richtext-lexical";
 import React from "react";
 
 interface ReferenceProps {
+    richText: DefaultTypedEditorState,
     data?: {
         Image: {
             url: string,
             alt: string
         },
-        richText: any,
+        richText: DefaultTypedEditorState,
         Paragraph: string,
     }[],
 
 }
 
-export const References: React.FC<ReferenceProps> = ({ data }) => {
+export const References: React.FC<ReferenceProps> = ({ data, richText }) => {
 
-    console.log(data)
+    // console.log(data)
 
     return (
 
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div className="text-center text-black mb-[40px]" >
+                {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
+            </div>
+
+            <div className="grid grid-cols-1 ml-[300px] md:grid-cols-2 lg:grid-cols-3 max-w-[1400px] gap-4">
+
+
+
                 {data?.map((item, index) => (
                     <div
                         key={index}
